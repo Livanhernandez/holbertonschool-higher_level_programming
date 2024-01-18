@@ -4,4 +4,3 @@ for ch in range(97, 123):
         pass
     else:
         print('{}'.format(chr(ch)), end='')
-    
