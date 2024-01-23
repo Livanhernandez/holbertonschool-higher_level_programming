@@ -3,6 +3,7 @@ if __name__ == "__main__":
     from calculator_1 import add, sub, mul, div
     from sys import argv
     argc = len(argv) - 1
+
     def operator_exit():
         print("Unknown operator. Available operators: +, -, * and /")
         exit(1)
