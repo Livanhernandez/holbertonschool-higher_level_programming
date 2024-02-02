@@ -1,40 +1,49 @@
 #!/usr/bin/python3
 """
-Module Name: 2-matrix_divided
-Description: Divides all elements of a matrix
-Authors: Lusanco, Ltoro9, Antoniofdjs Date: Feb 01 2024
+This is the "Matrix Divided" module.
+
+The Matrix Divided module takes in a list of lists matrix and divisor.
+All valid elements are divided by the divisor and returned as new matrix.
 """
 
 
 def matrix_divided(matrix, div):
-    """Description: Divides all elements of a matrix
-    - matrix (list): 2d array.
-    - div (int or float): Number to divide by."""
+    """Return a new matrix with all values divided by `div`.
+    Matrix must be a list of lists.
+    Each sub-list must contain only integers or floats.
+    Empty sub-lists are not allowed.
+    Divisor must be greater than 0 and must be an int or float.
+    """
+    if not isinstance(matrix, list):
+        raise TypeError("matrix must be a matrix (list of lists)"
+                        " of integers/floats")
+    if len(matrix) is 0:
+        raise TypeError("matrix must be a matrix (list of lists)"
+                        " of integers/floats")
+    if not all(len(l) > 0 for l in matrix):
+        raise TypeError("matrix must be a matrix (list of lists)"
+                        " of integers/floats")
 
-    mtx = "matrix must be a matrix (list of lists) of integers/floats"
-    siz = "Each row of the matrix must have the same size"
+    if not all(len(l) == len(matrix[0]) for l in matrix):
+        raise TypeError("Each row of the matrix must have the same size")
 
-    if div == 0:
+    for l in matrix:
+        if not isinstance(l, list):
+            raise TypeError("matrix must be a matrix (list of lists)"
+                            " of integers/floats")
+        if not all(isinstance(x, (int, float)) for x in l):
+            raise TypeError("matrix must be a matrix (list of lists)"
+                            " of integers/floats")
+
+    if div is 0:
         raise ZeroDivisionError("division by zero")
-
+    if isinstance(div, bool):
+        raise TypeError("div must be a number")
     if not isinstance(div, (int, float)):
         raise TypeError("div must be a number")
 
-    temp = len(matrix[0])
-    for row in matrix:
-        if not isinstance(row, list):
-            raise TypeError(mtx)
-        if temp != len(row):
-            raise TypeError(siz)
-        temp = len(row)
-
-    new_matrix = [row[:] for row in matrix]
-
-    for row in range(len(matrix)):
-        for column in range(len(matrix[row])):
-            if not isinstance(matrix[row][column], (int, float)):
-                raise TypeError(mtx)
-            result = round(matrix[row][column] / div, 2)
-            new_matrix[row][column] = result
+    new_matrix = []
+    for l in matrix:
+        new_matrix.append(list(map(lambda n: round(n / div, 2), l)))
 
     return new_matrix
