@@ -1,16 +1,22 @@
-#!/usr/bin/pyhton3
+#!/usr/bin/python3
 """
-Functions that adds two integers.
-a and b must be integers or floats, otherwise raise a TypeError exception
-a and b must be first casted to integers if they are float
+Module Name: 0-add_integer
+Description: Adds two integers
+Authors: Lusanco, Ltoro9, Antoniofdjs Date: Feb 01 2024
 """
 
 
 def add_integer(a, b=98):
-    if not isinstance(a, (int, float)):
+    """Description: Adds two integers
+    - a (int or float): The first integer.
+    - b (int or float): The second integer. Default is 98."""
+
+    err = "unsupported operand type(s) for +: 'NoneType' and 'int'"
+    if a is None or b is None:
+        raise TypeError(err)
+    if type(a) is not int and type(a) is not float:
         raise TypeError("a must be an integer")
-    if not isinstance(a, (int, float)):
+    if type(b) is not int and type(b) is not float:
         raise TypeError("b must be an integer")
-    a = int(a)
-    b = int(b)
-    return (a + b)
+
+    return int(a) + int(b)
