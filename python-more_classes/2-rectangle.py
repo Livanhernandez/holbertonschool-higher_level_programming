@@ -3,6 +3,7 @@
 
 
 class Rectangle:
+    """Rectangle class"""
     def __init__(self, width=0, height=0):
         if width < 0:
             raise ValueError("width must be >= 0")
