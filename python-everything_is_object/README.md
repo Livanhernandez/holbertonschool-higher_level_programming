@@ -1,0 +1,1 @@
+Type, isinstance and issubclass
