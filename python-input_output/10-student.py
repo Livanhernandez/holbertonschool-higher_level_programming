@@ -1,9 +1,12 @@
 #!/usr/bin/python3
-"""comment Mudoule"""
+""" CLass returns specified atribute if it has them
+    it dictionary form
+"""
 
 
-class Student():
-    """comment class"""
+class Student:
+    """ Student class will return __dict__
+    """
 
     def __init__(self, first_name, last_name, age):
         self.first_name = first_name
@@ -11,10 +14,11 @@ class Student():
         self.age = age
 
     def to_json(self, attrs=None):
-        obj_dict = {}
         if attrs is None:
-            attrs = dir(self)
-        for i in attrs:
-            if i in dir(self):
-                obj_dict[i] = getattr(self, i)
-            return obj_dict
+            return self.__dict__
+        else:
+            has_atribute = {}
+            for atribute in attrs:
+                if hasattr(self, atribute):
+                    has_atribute[atribute] = getattr(self, atribute)
+        return has_atribute
