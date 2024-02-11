@@ -5,8 +5,7 @@
 
 
 class Student:
-    """ Student class will return __dict__
-    """
+    """class Student that defines a student"""
 
     def __init__(self, first_name, last_name, age):
         self.first_name = first_name
@@ -17,8 +16,8 @@ class Student:
         if attrs is None:
             return self.__dict__
         else:
-            has_atribute = {}
-            for atribute in attrs:
-                if hasattr(self, atribute):
-                    has_atribute[atribute] = getattr(self, atribute)
-        return has_atribute
+            attrs_ = {}
+            for attribute in attrs:
+                if hasattr(self, attribute):
+                    attrs_[attribute] = getattr(self, attribute)
+        return attrs_
