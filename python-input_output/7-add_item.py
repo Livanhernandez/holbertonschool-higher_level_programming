@@ -1,27 +1,22 @@
 #!/usr/bin/python3
-"""comment Module"""
+"""get json string from file"""
+
+
 import sys
-import json
+save_json = __import__('5-save_to_json_file').save_to_json_file
+load_json = __import__('6-load_from_json_file').load_from_json_file
+
+my_list = []
 
 
-def save_to_json_file(my_obj, filename):
-    """comment fucntion"""
-    with open(filename, 'w') as f:
-        json.dump(my_obj, f)
-
-
-def load_from_json_file(filename):
-    """comment fucntion"""
-    with open(filename, 'r') as f:
-        return json.load(f)
-
-filename = "add_item.json"
 try:
-    items = load_from_json_file(filename)
-except:
-    items = []
+    my_list = load_json("add_item.json")[:]
+except FileNotFoundError:
+    pass
 
-for arg in sys.argv[1:]:
-    items.append(arg)
 
-save_to_json_file(items, filename)
+args = sys.argv[1:]
+my_list.extend(args)
+
+
+save_json(my_list, "add_item.json")
