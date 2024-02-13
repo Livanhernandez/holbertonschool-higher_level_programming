@@ -11,6 +11,7 @@ class Rectangle(Base):
     """Class renctangle from base"""
 
     def __init__(self, width, height, x=0, y=0, id=None):
+        """Init my class"""
         super().__init__(id)
         self.validator("width", width)
         self.validator("height", height)
@@ -24,7 +25,7 @@ class Rectangle(Base):
     def validator(self, attribute, value):
         """Int validator"""
         if type(value) is not int:
-            raise TypeError("{} must be and integer".format(attribute))
+            raise TypeError("{} must be an integer".format(attribute))
         if attribute == "width" or attribute == "height":
             if value <= 0:
                 raise ValueError("{} must be > 0".format(attribute))
@@ -67,3 +68,4 @@ class Rectangle(Base):
     def y(self, value):
         self.validator("y", value)
         self.__y = value
+        
