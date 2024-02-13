@@ -1,8 +1,12 @@
 #!/usr/bin/python3
-"""Write the first class Base"""
+"""
+Write the first class Base
+"""
 
 
 class Base:
+    """My class"""
+    
     __nb_objects = 0
 
     def __init__(self, id=None):
