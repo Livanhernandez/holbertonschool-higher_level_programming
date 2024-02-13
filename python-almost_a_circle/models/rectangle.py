@@ -68,4 +68,3 @@ class Rectangle(Base):
     def y(self, value):
         self.validator("y", value)
         self.__y = value
-        
