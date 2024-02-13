@@ -32,7 +32,7 @@ class Rectangle(Base):
         else:
             if value < 0:
                 raise ValueError("{} must be >= 0".format(attribute))
-    
+
     def area(self):
         """returns area value"""
         return self.__width * self.__height
