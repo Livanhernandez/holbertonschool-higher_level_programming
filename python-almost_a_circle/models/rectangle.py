@@ -61,6 +61,7 @@ class Rectangle(Base):
         y = self.__y
         w = self.__width
         h = self.__height
+        # "[Rectangle] (<id>) <x>/<y> - <width>/<height>"
         return "[Rectangle]({}) {}/{} - {}/{}".format(id, x, y, w, h)
 
     @property
