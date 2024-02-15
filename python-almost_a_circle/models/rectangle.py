@@ -42,7 +42,7 @@ class Rectangle(Base):
         for row in range(self.__height):
             print("#" * self.__width)
 
-    def update(self, *args, **kargs):
+    def update(self, *args, **kwargs):
         """Update values in order"""
         attributes = ["id", "width", "height", "x", "y"]
         if args:
@@ -50,7 +50,7 @@ class Rectangle(Base):
                 self.validator(attribute, value)
                 setattr(self, attribute, value)
         else:
-            for attribute, value in kargs.items():
+            for attribute, value in kwargs.items():
                 self.validator(attribute, value)
                 setattr(self, attribute, value)
 
@@ -63,6 +63,17 @@ class Rectangle(Base):
         h = self.__height
         # "[Rectangle] (<id>) <x>/<y> - <width>/<height>"
         return "[Rectangle]({}) {}/{} - {}/{}".format(id, x, y, w, h)
+
+    def to_dictionary(self):
+        """returns dictionary"""
+        my_dictionary = {
+            "id": self.id,
+            "width": self.__width,
+            "height": self.__height,
+            "x": self.__x,
+            "y": self.__y
+            }
+        return my_dictionary
 
     @property
     def width(self):
