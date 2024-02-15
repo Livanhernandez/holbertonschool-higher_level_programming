@@ -42,6 +42,27 @@ class Rectangle(Base):
         for row in range(self.__height):
             print("#" * self.__width)
 
+    def update(self, *args, **kargs):
+        """Update values in order"""
+        attributes = ["id", "width", "height", "x", "y"]
+        if args:
+            for attribute, value in zip(attributes, args):
+                self.validator(attribute, value)
+                setattr(self, attribute, value)
+        else:
+            for attribute, value in kargs.items():
+                self.validator(attribute, value)
+                setattr(self, attribute, value)
+
+    def __str__(self):
+        """str representation"""
+        id = self.id
+        x = self.__x
+        y = self.__y
+        w = self.__width
+        h = self.__height
+        return "[Rectangle]({}) {}/{} - {}/{}".format(id, x, y, w, h)
+
     @property
     def width(self):
         return self.__width
