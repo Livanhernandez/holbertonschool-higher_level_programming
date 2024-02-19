@@ -73,5 +73,5 @@ class Base:
                     instance = cls.create(**d)
                     instances.append(instance)
                 return instances
-        except:
+        except Exception:
             return []
