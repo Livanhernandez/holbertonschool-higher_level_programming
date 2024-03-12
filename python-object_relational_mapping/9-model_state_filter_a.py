@@ -11,8 +11,13 @@ if __name__ == "__main__":
     password = sys.argv[2]
     db = sys.argv[3]
 
-    engine = create_engine(db_api.format(user, password, db),
-                            pool_pre_ping=True)
+    engine = create_engine(db_api.format(
+        user,
+        password,
+        db
+        ),
+        pool_pre_ping=True)
+
     Session = sessionmaker(bind=engine)
     session = Session()
     results = session.query(State).filter(State.name.like('%a%'))
