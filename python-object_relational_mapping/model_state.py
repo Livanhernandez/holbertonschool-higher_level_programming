@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Provide a class that map to state table"""
-
+# Module for Connecting to MySQL database
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy import Column, Integer, String
