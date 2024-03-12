@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """Script that takes in an argument and display all values"""
 
-import MySQLdb
 from sys import argv
+from MySQLdb import connect
 
 if __name__ == '__main__':
 
